@@ -5,6 +5,8 @@ import Cart from './components/cart/Cart';
 import Footer from './components/footer/Footer';
 import Overlay from './components/overlay/Overlay';
 import React from 'react';
+import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
     // Состояние оверлея (корзины)
@@ -15,16 +17,31 @@ function App() {
     const [overlayItems, setOverlayItems] = React.useState([])
     // Для поиска
     const [search, setSearch] = React.useState('')
+    // Для хранения избранных заявок
+    const [favorites, setFavorites] = React.useState([])
 
     React.useEffect(() => {
-        fetch('https://63d7bba8afbba6b7c94312f2.mockapi.io/tyrs')
-        .then((response) => {return response.json()})
-        .then((myJson) => {setTyrs(myJson)})
+        axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/tyrs')
+            .then((resJson) => {setTyrs(resJson.data)})
+
+        axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart')
+            .then((res) => {setOverlayItems(res.data)})
     }, [])
+
+    const deleteItems = (id) => {
+        console.log(id);
+        axios.delete(`https://63d7bba8afbba6b7c94312f2.mockapi.io/cart/${id}`)
+        setOverlayItems((objDelete) => objDelete.filter(item => item.id !== id))
+    }
 
     return(
         <div className="app">
-            {overlayOpen ? <Overlay overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
+            {overlayOpen ? <Overlay deleteItems={deleteItems} overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
+            
+            <Routes>
+                <Route path='/favorites' element={<h2>Избранное</h2>}/>
+            </Routes>
+            
             <Header openOverlay = {() => setOverlayOpen(true)}/>
             <Banner />
 
@@ -43,7 +60,14 @@ function App() {
                 </p>
             </div>
 
-            <Cart item={tyrs} overlayItems={overlayItems} setOverlayItems={setOverlayItems} search={search} setSearch={setSearch}/>
+            <Cart 
+                favorites={favorites} 
+                setFavorites={setFavorites} 
+                item={tyrs} 
+                overlayItems={overlayItems} 
+                setOverlayItems={setOverlayItems} 
+                search={search} 
+                setSearch={setSearch}/>
             <Footer />
         </div>
     )

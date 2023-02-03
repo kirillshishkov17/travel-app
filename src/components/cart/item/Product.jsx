@@ -4,6 +4,7 @@ import React from 'react';
 const Product = (props) => {
 
     const [added, setAdded] = React.useState(false);
+    const [fav, setFav] = React.useState(false);
 
     const onClickAdd = () => {
         setAdded(!added);
@@ -15,9 +16,26 @@ const Product = (props) => {
         props.onPlus({title, description, price, img});
     }
 
+    const onClickFav = () => {
+        setFav(!fav);
+        let title = props.title
+        let description = props.description
+        let price = props.price
+        let img = props.img
+
+        props.favBtn({title, description, price, img});
+    }
+
     return(
         <div className={style.cart_item}>
-            <button className={style.fav_btn} onClick={props.favBtn}>Добавить в избранное</button>
+
+            {
+                fav === false ?
+                <button className={style.fav_btn} onClick={onClickFav}>Добавить в избранное</button>
+                :
+                <button className={style.fav_btn_add} onClick={onClickFav}>Добавлено в избранное</button>
+            }
+
             <img className={style.cart_img} src={props.img} alt="File not found" />
             <p className={style.cart_title}>{props.title}</p>
             <p className={style.cart_description}>

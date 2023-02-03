@@ -1,14 +1,21 @@
 import Product from "./item/Product";
 import style from './cart.module.css'
+import axios from "axios";
 
 const Cart = (props) => {
     
     const onAddOverlay = (obj) => {
+        axios.post('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart', obj)
         props.setOverlayItems([...props.overlayItems, obj]);
     }
 
     const onClickSearch = (inputValue) => {
         props.setSearch(inputValue.target.value)
+    }
+
+    const onAddFav = (obj) => {
+        axios.post('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites', obj)
+        props.setFavorites([...props.favorites, obj])
     }
 
     return(
@@ -29,7 +36,7 @@ const Cart = (props) => {
                             return(
                                 <Product key={obj.id} title={obj.title} 
                                     price={obj.price} img={obj.img} 
-                                    favBtn = {() => {alert("Добавить в избранное")}}
+                                    favBtn = {(favObj) => {onAddFav(favObj)}}
                                     onPlus={(cartObj) => {onAddOverlay(cartObj)}}/>
                             )
                         }

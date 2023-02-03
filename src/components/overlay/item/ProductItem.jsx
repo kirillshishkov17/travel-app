@@ -8,7 +8,7 @@ const ProductItem = (props) => {
                 <br />
                 <span className={style.product_price}>{props.price}</span>
             </h3>
-            <button className={style.close_btn}>X</button>
+            <button onClick={() => props.deleteItems(props.id)} className={style.close_btn}>X</button>
         </div>
     )
 }

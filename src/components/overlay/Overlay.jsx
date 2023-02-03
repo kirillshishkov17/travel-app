@@ -10,6 +10,9 @@ const Overlay = (props) => {
                     <button className={style.close_btn} onClick={props.closeItem}>X</button>
                 </div>
 
+                {
+                    props.overlayProp.length > 0 ?
+                
                 <div className={style.product_list}>
                     {
                         props.overlayProp.map(obj => {
@@ -17,12 +20,17 @@ const Overlay = (props) => {
                                 <ProductItem title={obj.title} 
                                              price={obj.price} 
                                              img={obj.img}
-                                             key={obj.id}>
+                                             key={obj.id}
+                                             id={obj.id}
+                                             deleteItems={props.deleteItems}>
                                 </ProductItem>
                             )
                         })
                     }
                 </div>
+
+                : <h1>Заявок нет</h1>
+                }
 
                 <div className={style.total_price}>
                     <p className={style.total_price_text}>Итог:</p>

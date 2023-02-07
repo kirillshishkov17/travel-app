@@ -20,15 +20,21 @@ function App() {
     // Для хранения избранных заявок
     const [favorites, setFavorites] = React.useState([])
 
+    // Получение данных с API
     React.useEffect(() => {
-        axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/tyrs')
-            .then((resJson) => {setTyrs(resJson.data)})
+        async function axiosData() {
 
-        axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart')
-            .then((res) => {setOverlayItems(res.data)})
+            const tyrsData = await axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/tyrs')
+            setTyrs(tyrsData.data)
 
-        axios.get('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites')
-            .then((res) => setFavorites(res.data))
+            const cartData = await axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart')
+            setOverlayItems(cartData.data)
+
+            const favoritesData = await axios.get('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites')
+            setFavorites(favoritesData.data)
+        }
+
+        axiosData();
 
     }, [])
 

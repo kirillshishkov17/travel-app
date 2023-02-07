@@ -30,6 +30,7 @@ const Cart = (props) => {
 
             if (findFavorites) {
                 axios.delete(`https://63dcfb51df83d549ce97d40d.mockapi.io/favorites/${findFavorites.id}`)
+                props.setFavorites((over) => over.filter(item => item.myId !== obj.myId))
             } else {
                 const {data} = await axios.post('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites', obj)
                 props.setFavorites([...props.favorites, data])

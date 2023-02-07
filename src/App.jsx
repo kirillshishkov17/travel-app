@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './components/header/Header';
-import Banner from './components/banner/Banner';
-import Cart from './components/cart/Cart';
 import Footer from './components/footer/Footer';
 import Overlay from './components/overlay/Overlay';
+import Favorites from './components/favorites/Favorites';
 import React from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
 
 function App() {
     // Состояние оверлея (корзины)
@@ -26,6 +26,10 @@ function App() {
 
         axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart')
             .then((res) => {setOverlayItems(res.data)})
+
+        axios.get('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites')
+            .then((res) => setFavorites(res.data))
+
     }, [])
 
     const deleteItems = (id) => {
@@ -38,36 +42,37 @@ function App() {
         <div className="app">
             {overlayOpen ? <Overlay deleteItems={deleteItems} overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
             
-            <Routes>
-                <Route path='/favorites' element={<h2>Избранное</h2>}/>
-            </Routes>
-            
             <Header openOverlay = {() => setOverlayOpen(true)}/>
-            <Banner />
 
-            <div className="text_section">
-                <h2>ТУРЫ ОТ LIVE-TYR</h2>
-                <p>
-                    Сотрудничество более чем с 20 международными и национальными компаниями, 
-                    работающими на отправку и прием туристов, позволяет нам качественно предоставлять
-                    услуги туристам из России, Болгарии, Румынии, Украины, Латвии, Литвы, Белоруссии, 
-                    Эстонии, Молдавии и Казахстана.
-                </p>
-                <p>
-                    Международный туристический оператор является одной из международных компаний,
-                    организующих туры для туристов из России, стран бывшего СССР и Восточной
-                    Европы. TEZ TOUR основан в 1994 году.
-                </p>
-            </div>
+            <Routes>
+                <Route path='/favorites' 
+                    element={
+                        <Favorites
+                            item={tyrs} 
+                            favorites={favorites}
+                            setFavorites={setFavorites}
+                            overlayItems={overlayItems} 
+                            setOverlayItems={setOverlayItems}
+                        />
+                    }
+                />
+            
 
-            <Cart 
-                favorites={favorites} 
-                setFavorites={setFavorites} 
-                item={tyrs} 
-                overlayItems={overlayItems} 
-                setOverlayItems={setOverlayItems} 
-                search={search} 
-                setSearch={setSearch}/>
+                <Route path='/' 
+                    element={
+                        <Home 
+                            item={tyrs} 
+                            search={search} 
+                            setSearch={setSearch}    
+                            favorites={favorites} 
+                            setFavorites={setFavorites} 
+                            overlayItems={overlayItems} 
+                            setOverlayItems={setOverlayItems}x
+                        />
+                    }
+                />
+            </Routes>
+
             <Footer />
         </div>
     )

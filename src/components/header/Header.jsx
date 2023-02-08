@@ -14,7 +14,11 @@ const Header = (props) => {
                     <h2 className={style.nav_item} href="#">Избранное</h2>
                 </Link>
                 
-                <a className={style.nav_item} href="#" onClick={props.openOverlay}>Заявки</a>
+                <h2 className={style.nav_item} href="#" onClick={props.openOverlay}>Заявки:
+                    <span>
+                        {props.overlayItems.length}
+                    </span>
+                </h2>
             </nav>
         </header>
     )

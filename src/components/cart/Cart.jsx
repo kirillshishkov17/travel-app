@@ -65,7 +65,8 @@ const Cart = (props) => {
                                     img={obj.img}
                                     
                                     favBtn = {(favObj) => {onAddFav(favObj)}}
-                                    onPlus={(cartObj) => {onAddOverlay(cartObj)}}/>
+                                    onPlus={(cartObj) => {onAddOverlay(cartObj)}}
+                                />
                             )
                         }
                     )

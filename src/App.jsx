@@ -46,6 +46,14 @@ function App() {
         setOverlayItems((objDelete) => objDelete.filter(item => item.id !== id))
     }
 
+    const isAdded = (myId) => {
+        return overlayItems.some((objIsAdded) => objIsAdded.myId === myId)
+    }
+
+    const isFav = (myId) => {
+        return favorites.some((objIsFav) => objIsFav.myId === myId)
+    }
+
     return(
         <AppContext.Provider
             value={
@@ -55,46 +63,47 @@ function App() {
                     overlayItems,
                     setOverlayItems,
                     favorites,
-                    setFavorites
+                    setFavorites,
+                    isAdded,
+                    isFav
                 }
             }
         >
             
             <div className="app">
-            {overlayOpen ? <Overlay deleteItems={deleteItems} overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
+                {overlayOpen ? <Overlay deleteItems={deleteItems} overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
             
-            <Header openOverlay = {() => setOverlayOpen(true)}/>
+                <Header openOverlay = {() => setOverlayOpen(true)} overlayItems={overlayItems}/>
 
-            <Routes>
-                <Route path='/favorites' 
-                    element={
-                        <Favorites
-                            item={tyrs} 
-                            favorites={favorites}
-                            setFavorites={setFavorites}
-                            overlayItems={overlayItems} 
-                            setOverlayItems={setOverlayItems}
-                        />
-                    }
-                />
-            
+                <Routes>
+                    <Route path='/favorites' 
+                        element={
+                            <Favorites
+                                item={tyrs} 
+                                favorites={favorites}
+                                setFavorites={setFavorites}
+                                overlayItems={overlayItems} 
+                                setOverlayItems={setOverlayItems}
+                            />
+                        }
+                    />
 
-                <Route path='/' 
-                    element={
-                        <Home 
-                            item={tyrs} 
-                            search={search} 
-                            setSearch={setSearch}    
-                            favorites={favorites} 
-                            setFavorites={setFavorites} 
-                            overlayItems={overlayItems} 
-                            setOverlayItems={setOverlayItems}x
-                        />
-                    }
-                />
-            </Routes>
+                    <Route path='/' 
+                        element={
+                            <Home 
+                                item={tyrs} 
+                                search={search} 
+                                setSearch={setSearch}    
+                                favorites={favorites} 
+                                setFavorites={setFavorites} 
+                                overlayItems={overlayItems} 
+                                setOverlayItems={setOverlayItems}x
+                            />
+                        }
+                    />
+                </Routes>
 
-            <Footer />
+                <Footer />
             </div>
 
         </AppContext.Provider>

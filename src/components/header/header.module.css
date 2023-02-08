@@ -30,3 +30,7 @@ nav {
 .nav_item:hover {
   color: black;
 }
+
+.nav_item span {
+  padding: 5px;
+}

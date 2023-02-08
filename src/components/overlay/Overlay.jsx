@@ -34,7 +34,7 @@ const Overlay = (props) => {
 
                 <div className={style.total_price}>
                     <p className={style.total_price_text}>Итог:</p>
-                    <p className={style.total_price_sum}>36 000</p>
+                    <p className={style.total_price_sum}>{props.totalPrice}</p>
                     <button>Оставить заявку</button>
                 </div>
             </div>

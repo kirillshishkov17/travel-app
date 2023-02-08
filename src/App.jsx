@@ -71,7 +71,19 @@ function App() {
         >
             
             <div className="app">
-                {overlayOpen ? <Overlay deleteItems={deleteItems} overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
+                {
+                    overlayOpen ? 
+                        <Overlay
+                            totalPrice = {
+                                overlayItems.reduce((elements = overlayItems.length, obj) => elements + obj.price, 0)
+                            }
+
+                            deleteItems={deleteItems} 
+                            overlayProp={overlayItems} 
+                            closeItem = {() => setOverlayOpen(false)}
+                        />
+                        : null
+                }
             
                 <Header openOverlay = {() => setOverlayOpen(true)} overlayItems={overlayItems}/>
 

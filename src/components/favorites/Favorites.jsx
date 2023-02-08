@@ -2,18 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import style from './favorites.module.css';
 import FavoritesItem from './item/FavoritesItem.jsx';
+import { AppContext } from '../../App';
 
 const Favorites = (props) => {
 
+    const context = React.useContext(AppContext)
+
     const onAddOverlay = (obj) => {
         axios.post('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart', obj)
-        props.setOverlayItems([...props.overlayItems, obj]);
+        context.setOverlayItems([...props.overlayItems, obj]);
     }
 
     const onDeleteFav = (id) => {
         console.log(id)
         axios.delete(`https://63dcfb51df83d549ce97d40d.mockapi.io/favorites/${id}`)
-        props.setFavorites((fav) => fav.filter(item => item.id !== id))
+        context.setFavorites((fav) => fav.filter(item => item.id !== id))
     }
 
     return(

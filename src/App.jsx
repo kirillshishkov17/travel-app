@@ -8,6 +8,8 @@ import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 
+export const AppContext = React.createContext({})
+
 function App() {
     // Состояние оверлея (корзины)
     const [overlayOpen, setOverlayOpen] = React.useState(false)
@@ -45,7 +47,20 @@ function App() {
     }
 
     return(
-        <div className="app">
+        <AppContext.Provider
+            value={
+                {
+                    tyrs,
+                    setTyrs,
+                    overlayItems,
+                    setOverlayItems,
+                    favorites,
+                    setFavorites
+                }
+            }
+        >
+            
+            <div className="app">
             {overlayOpen ? <Overlay deleteItems={deleteItems} overlayProp={overlayItems} closeItem = {() => setOverlayOpen(false)}/>: null}
             
             <Header openOverlay = {() => setOverlayOpen(true)}/>
@@ -80,7 +95,9 @@ function App() {
             </Routes>
 
             <Footer />
-        </div>
+            </div>
+
+        </AppContext.Provider>
     )
 }
 

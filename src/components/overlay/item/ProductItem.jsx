@@ -6,7 +6,7 @@ const ProductItem = (props) => {
             <img className={style.product_img} src={props.img} alt="File not found" />
             <h5 className={style.product_title}> {props.title}
                 <br />
-                <span className={style.product_price}>{props.price}</span>
+                <span className={style.product_price}>{props.price} руб.</span>
             </h5>
             <button onClick={() => props.deleteItems(props.id)} className={style.close_btn}>X</button>
         </div>

@@ -17,11 +17,44 @@
 .slider {
   background-color: rgb(202, 218, 248);
   color: rgb(40, 0, 240);
-  margin: 10px;
+  margin: 20px;
   padding: 2%;
   position: relative;
 }
 
+.slider img {
+  margin: auto;
+}
+
 .slick-next:before, .slick-prev:before {
-  color: rgb(40, 0, 240);
+  color: rgb(40, 40, 40);
+  opacity: 0.85;
+  font-size: 23px;
+}
+
+@media screen and (max-width: 900px) {
+  .slick-next:before, .slick-prev:before {
+    display: none;
+  }
+
+  .slider {
+    margin: 25px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding: 0;
+    background-color: white;
+  }
+
+  .slider img {
+    height: 350px;
+  }
+}
+
+/*Описание компании*/
+@media screen and (max-width: 900px) {
+  .text_section {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-align: justify;
+  }
 }

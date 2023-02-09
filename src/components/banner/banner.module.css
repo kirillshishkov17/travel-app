@@ -53,3 +53,27 @@
     background-color: white;
     color: rgb(4, 4, 223);;
   }
+
+  @media screen and (max-width: 900px) {
+  .banner {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .text_banner {
+    font-size: 16px;
+    margin: 0;
+    justify-self: start;
+  }
+  .banner_btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .banner_section {
+    margin: 20px;
+    margin-top: 40px;
+  }
+}

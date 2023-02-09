@@ -22,9 +22,9 @@ const Favorites = (props) => {
     return(
         <div className={style.cart_section}>
             <div className={style.search}>
-                <h1>Избранные туры</h1>
+                <h1>Избранные туры:</h1>
             </div>
-            
+
             <div className={style.cart}>
                 {
                     props.favorites.map(

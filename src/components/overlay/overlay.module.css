@@ -1,6 +1,5 @@
 /*Overlay*/
 .overlay {
-  /* display: none; */
   position: absolute;
   position: fixed;
   left: 0;
@@ -21,6 +20,21 @@
   box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.486);
   padding: 0px 50px 0px 50px;
   grid-template-rows: 0.5fr 6fr 1fr;
+}
+
+@media screen and (max-width: 900px) {
+  .product {
+    width: 100%;
+    position: fixed;
+  }
+
+  .product_list {
+    margin-top: 30px;
+  }
+
+  .title_block {
+    margin-top: 20px;
+  }
 }
 
 .title_block {

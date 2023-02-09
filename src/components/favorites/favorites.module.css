@@ -1,13 +1,18 @@
-/*Секция Cart*/
 .cart {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width:900px) {
+    .cart {
+      display: grid;
+    }
   }
   
   .cart_section {
     max-width: 1200px;
     margin: 0 auto;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
   }
   
   .cart_section h1 {
@@ -16,13 +21,14 @@
   
   .search {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns:1fr;
     align-items: center;
   }
   
   .search h1 {
-    justify-self: start;
+    justify-self: center;
     font-size: 30px;
+    padding: 5%;
   }
   
   .search_block img {

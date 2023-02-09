@@ -22,3 +22,11 @@
   color: black;
   padding: 10px 12px 10px 12px;
 }
+
+@media screen and (max-width:900px) {
+  .product_img {
+    width: 55px;
+    border-radius: 20px;
+    padding: 5px;
+  }
+}

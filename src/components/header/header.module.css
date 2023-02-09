@@ -11,12 +11,22 @@ header {
 @media screen and (max-width:900px) {
   header {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
 .logo {
   color: white;
   font-size: 50px;
+}
+
+@media screen and (max-width:900px) {
+  .logo {
+    border: 1px solid white;
+    padding: 5px;
+    width: 250px;
+    text-align: center;
+  }
 }
 
 nav {
@@ -26,11 +36,27 @@ nav {
   align-items: center;
 }
 
+@media screen and ( max-width: 900px) {
+  nav {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
 .nav_item {
   color: white;
   font-size: 30px;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and ( max-width: 900px) {
+  .nav_item {
+    border: 1px solid white;
+    padding: 5px;
+    width: 250px;
+    text-align: center;
+  }
 }
 
 .nav_item:hover {

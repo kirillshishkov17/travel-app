@@ -1,6 +1,8 @@
 .form {
-    margin-top: 10px;
+    margin: auto;
+    margin-top: 50px;
     height: 100vh;
     text-align: center;
     padding: 20px;
+    width: 80%;
 }

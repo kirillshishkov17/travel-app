@@ -50,7 +50,7 @@ const Product = (props) => {
                 <br />05.12.22 - 2 взрослых</p>
             <p className={style.price}>Цена:</p>
             <div className={style.cart_price}>
-                <span>{props.price}</span>
+                <span>{props.price} руб.</span>
                 <button className={style.add_cart} 
                     onClick={onClickAdd}>{context.isAdded(props.myId) ? 
                         <img width={15} src={"/img/icon.png"} alt="File not found" /> 

@@ -10,7 +10,7 @@ const Banner = () => {
                     <br />
                     <span>без комиссии!</span>
                     <br />
-                    <Link exact to={'/form'}>
+                    <Link to={'/form'}>
                         <button className={style.banner_btn}>Оставить заявку</button>
                     </Link>
                 </p>

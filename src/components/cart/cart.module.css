@@ -1,7 +1,12 @@
 /*Секция Cart*/
 .cart {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (min-width:900px) {
+  .cart {
+    display: grid;
+  }
 }
 
 .cart_section {

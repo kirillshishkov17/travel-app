@@ -1,4 +1,5 @@
 import style from './banner.module.css'
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return(
@@ -9,7 +10,9 @@ const Banner = () => {
                     <br />
                     <span>без комиссии!</span>
                     <br />
-                    <button className={style.banner_btn}>Оставить заявку</button>
+                    <Link exact to={'/form'}>
+                        <button className={style.banner_btn}>Оставить заявку</button>
+                    </Link>
                 </p>
             </div>
         </div>

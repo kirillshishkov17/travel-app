@@ -8,6 +8,12 @@ header {
   padding-right: 50px;
 }
 
+@media screen and (max-width:900px) {
+  header {
+    grid-template-columns: 1fr;
+  }
+}
+
 .logo {
   color: white;
   font-size: 50px;

@@ -15,7 +15,7 @@ const Favorites = (props) => {
 
     const onDeleteFav = (id) => {
         console.log(id)
-        axios.delete(`https://63dcfb51df83d549ce97d40d.mockapi.io/favorites/${id}`)
+        axios.delete(`https://63e53e18c04baebbcdb6b161.mockapi.io/favorites/${id}`)
         context.setFavorites((fav) => fav.filter(item => item.id !== id))
     }
 

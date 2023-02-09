@@ -18,16 +18,16 @@ export default class TestSlider extends Component {
         
         <Slider {...settings}>
           <div>
-            <img width={420} height={400} src="./img/first.jpg" alt="Image not found" />
+            <img width={420} height={400} src="./img/first.jpg" alt=""/>
           </div>
           <div>
-            <img width={420} height={400} src="./img/second.jpg" alt="Image not found" />
+            <img width={420} height={400} src="./img/second.jpg" alt=""/>
           </div>
           <div>
-            <img width={420} height={400} src="./img/three.jpg" alt="Image not found" />
+            <img width={420} height={400} src="./img/three.jpg" alt=""/>
           </div>
           <div>
-            <img width={420} height={400} src="./img/four.jpg" alt="Image not found" />
+            <img width={420} height={400} src="./img/four.jpg" alt=""/>
           </div>
         </Slider>
       </div>

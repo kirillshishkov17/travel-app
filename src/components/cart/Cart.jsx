@@ -29,10 +29,10 @@ const Cart = (props) => {
             const findFavorites = props.favorites.find(objFav => objFav.myId === obj.myId);
 
             if (findFavorites) {
-                axios.delete(`https://63dcfb51df83d549ce97d40d.mockapi.io/favorites/${findFavorites.id}`)
+                axios.delete(`https://63e53e18c04baebbcdb6b161.mockapi.io/favorites/${findFavorites.id}`)
                 props.setFavorites((over) => over.filter(item => item.myId !== obj.myId))
             } else {
-                const {data} = await axios.post('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites', obj)
+                const {data} = await axios.post('https://63e53e18c04baebbcdb6b161.mockapi.io/favorites', obj)
                 props.setFavorites([...props.favorites, data])
             }
         } catch {

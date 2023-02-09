@@ -4,10 +4,10 @@ const ProductItem = (props) => {
     return(
         <div className={style.product_item}>
             <img className={style.product_img} src={props.img} alt="File not found" />
-            <h3 className={style.product_title}> {props.title}
+            <h5 className={style.product_title}> {props.title}
                 <br />
                 <span className={style.product_price}>{props.price}</span>
-            </h3>
+            </h5>
             <button onClick={() => props.deleteItems(props.id)} className={style.close_btn}>X</button>
         </div>
     )

@@ -7,6 +7,7 @@ import React from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
+import Form from './components/form/Form';
 
 export const AppContext = React.createContext({})
 
@@ -32,7 +33,7 @@ function App() {
             const cartData = await axios.get('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart')
             setOverlayItems(cartData.data)
 
-            const favoritesData = await axios.get('https://63dcfb51df83d549ce97d40d.mockapi.io/favorites')
+            const favoritesData = await axios.get('https://63e53e18c04baebbcdb6b161.mockapi.io/favorites')
             setFavorites(favoritesData.data)
         }
 
@@ -111,6 +112,12 @@ function App() {
                                 overlayItems={overlayItems} 
                                 setOverlayItems={setOverlayItems}x
                             />
+                        }
+                    />
+
+                    <Route path='/form'
+                        element={
+                            <Form />
                         }
                     />
                 </Routes>

@@ -8,9 +8,20 @@ const Favorites = (props) => {
 
     const context = React.useContext(AppContext)
 
-    const onAddOverlay = (obj) => {
-        axios.post('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart', obj)
-        context.setOverlayItems([...props.overlayItems, obj]);
+    const onAddOverlay = async (obj) => {
+        try {
+            const findOverlay = props.overlayItems.find(objOver => objOver.myId === obj.myId);
+
+            if (findOverlay) {
+                axios.delete(`https://63d7bba8afbba6b7c94312f2.mockapi.io/cart/${findOverlay.id}`)
+                props.setOverlayItems((over) => over.filter(item => item.myId !== obj.myId))
+            } else {
+                const {data} = await axios.post('https://63d7bba8afbba6b7c94312f2.mockapi.io/cart', obj)
+                props.setOverlayItems([...props.overlayItems, data]);
+            }
+        } catch {
+            alert('Произошла ошибка')
+        }
     }
 
     const onDeleteFav = (id) => {
@@ -35,6 +46,7 @@ const Favorites = (props) => {
                                 return(
                                     <FavoritesItem
                                         id={obj.id}
+                                        myId={obj.myId}
                                         key={obj.id}
                                         title={obj.title} 
                                         price={obj.price} img={obj.img}

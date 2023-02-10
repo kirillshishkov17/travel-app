@@ -1,19 +1,22 @@
 import style from './favoritesItem.module.css'
 import React from 'react';
+import { AppContext } from '../../../App';
 
 const FavoritesItem = (props) => {
 
     const [added, setAdded] = React.useState(false);
-    const [fav, setFav] = React.useState(false);
+
+    const context = React.useContext(AppContext);
 
     const onClickAdd = () => {
         setAdded(!added);
         let id = props.id;
+        let myId = props.myId
         let title = props.title
         let description = props.description
         let price = props.price
         let img = props.img
-        props.onPlus({id, title, description, price, img});
+        props.onPlus({id, myId, title, description, price, img});
     }
 
     const onDelete = () => {
@@ -35,7 +38,9 @@ const FavoritesItem = (props) => {
             <div className={style.cart_price}>
                 <span>{props.price}</span>
                 <button className={style.add_cart} 
-                    onClick={onClickAdd}>{added ? <img width={15} src={"/img/icon.png"} alt="File not found" /> :"Оставить заявку"}
+                    onClick={onClickAdd}>{context.isAdded(props.myId) ? 
+                        <img width={15} src={"/img/icon.png"} alt="File not found" /> 
+                        : "Оставить заявку"}
                 </button>
             </div>
         </div>

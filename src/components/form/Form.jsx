@@ -11,6 +11,8 @@ export default function Form() {
         alert("Заявка отправлена")
     }
 
+    window.scrollTo(0, 0)
+
     return(
         <div className={style.form}>
             <form id="form" onSubmit={handleSubmit(onSubmit)}>

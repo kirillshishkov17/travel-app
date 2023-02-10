@@ -18,7 +18,9 @@ export default class PicSlider extends Component {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 2
+          initialSlide: 2,
+          autoplay: false,
+          speed: 500
         }
       }]
     };
@@ -30,13 +32,13 @@ export default class PicSlider extends Component {
             <img width={450} height={400} src="./img/first.jpg" alt=""/>
           </div>
           <div>
-            <img width={450} height={400} src="./img/second.jpg" alt=""/>
+            <img width={455} height={400} src="./img/second.jpg" alt=""/>
           </div>
           <div>
-            <img width={450} height={400} src="./img/three.jpg" alt=""/>
+            <img width={455} height={400} src="./img/three.jpg" alt=""/>
           </div>
           <div>
-            <img width={450} height={400} src="./img/four.jpg" alt=""/>
+            <img width={455} height={400} src="./img/four.jpg" alt=""/>
           </div>
         </Slider>
       </div>

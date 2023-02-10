@@ -17,7 +17,7 @@
 .slider {
   background-color: rgb(202, 218, 248);
   color: rgb(40, 0, 240);
-  margin: 20px;
+  margin: 50px;
   padding: 2%;
   position: relative;
 }
@@ -33,13 +33,16 @@
 }
 
 @media screen and (max-width: 900px) {
-  .slick-next:before, .slick-prev:before {
-    display: none;
+  .slick-next:before {
+    margin-left: -15%;
+  }
+
+  .slick-prev:before {
+    margin-right: -15%;
   }
 
   .slider {
     margin: 25px;
-    margin-top: 15px;
     margin-bottom: 5px;
     padding: 0;
     background-color: white;

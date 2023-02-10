@@ -25,23 +25,29 @@ const Favorites = (props) => {
                 <h1>Избранные туры:</h1>
             </div>
 
-            <div className={style.cart}>
-                {
-                    props.favorites.map(
-                        obj => {
-                            return(
-                                <FavoritesItem
-                                    id={obj.id}
-                                    key={obj.id}
-                                    title={obj.title} 
-                                    price={obj.price} img={obj.img}
-                                    onDeleteFav = {(id) => {onDeleteFav(id)}}
-                                    onPlus={(cartObj) => {onAddOverlay(cartObj)}}/>
-                            )
-                        }
-                    )
-                }
+            {
+                props.favorites.length > 0 ?
+
+                <div className={style.cart}>
+                    {
+                        props.favorites.map(
+                            obj => {
+                                return(
+                                    <FavoritesItem
+                                        id={obj.id}
+                                        key={obj.id}
+                                        title={obj.title} 
+                                        price={obj.price} img={obj.img}
+                                        onDeleteFav = {(id) => {onDeleteFav(id)}}
+                                        onPlus={(cartObj) => {onAddOverlay(cartObj)}}/>
+                                )
+                            }
+                        )
+                    }
             </div>
+            :
+            <h2>Нет избранных туров</h2>
+            }
         </div>
     )
 }

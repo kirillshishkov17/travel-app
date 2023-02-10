@@ -46,7 +46,8 @@ export default function Form() {
                     
                     <div className="input-group mb-3">
                         <input {...register("email", {
-                            maxLength: 50, 
+                            maxLength: 50,
+                            required: true, 
                             pattern: {value: /\S+@\S+\.\S+/,
                             message: "Entered value does not match email format"
                             } 

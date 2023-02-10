@@ -44,6 +44,8 @@
 
 .title_block h2{
   font-size: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .close_btn {
@@ -90,4 +92,8 @@
   align-self: end;
   font-size: 20px;
   font-weight: bold;
+}
+
+h1 {
+  margin: auto;
 }

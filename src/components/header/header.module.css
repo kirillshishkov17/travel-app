@@ -55,7 +55,8 @@ nav {
     border: 1px solid white;
     padding: 5px;
     width: 250px;
-    text-align: center;
+    /* text-align: center; */
+    margin: auto;
   }
 }
 

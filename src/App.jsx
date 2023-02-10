@@ -82,6 +82,7 @@ function App() {
                             deleteItems={deleteItems} 
                             overlayProp={overlayItems} 
                             closeItem = {() => setOverlayOpen(false)}
+                            setOverlayOpen={setOverlayOpen}
                         />
                         : null
                 }

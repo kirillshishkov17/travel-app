@@ -1,7 +1,13 @@
 import ProductItem from "./item/ProductItem"
 import style from "./overlay.module.css"
+import { Link } from "react-router-dom"
 
 const Overlay = (props) => {
+
+    const closeOverlay = () => {
+        props.setOverlayOpen(false)
+    }
+
     return(        
         <div className={style.overlay}>
             <div className={style.product}>
@@ -35,7 +41,7 @@ const Overlay = (props) => {
                 <div className={style.total_price}>
                     <p className={style.total_price_text}>Итог:</p>
                     <p className={style.total_price_sum}>{props.totalPrice} руб.</p>
-                    <button onClick={() => {alert("Заявка отправлена")}}>Оставить заявку</button>
+                    <Link to="/form" onClick={closeOverlay}>Оставить заявку</Link>
                 </div>
             </div>
         </div>

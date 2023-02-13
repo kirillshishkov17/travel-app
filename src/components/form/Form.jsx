@@ -1,14 +1,18 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import style from "./form.module.css"
 import axios from "axios";
 
-export default function Form() {
+export default function Form(props) {
 
+    const navigate = useNavigate();
     const { register, handleSubmit, formState:{errors} } = useForm();
     const onSubmit = (data) => {
         axios.post("https://63e53e18c04baebbcdb6b161.mockapi.io/form", data)
         alert("Заявка отправлена")
+        props.deleteAllItems()
+        navigate("/", { replace: true })
     }
 
     window.scrollTo(0, 0)

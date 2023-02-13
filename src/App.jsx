@@ -47,6 +47,13 @@ function App() {
         setOverlayItems((objDelete) => objDelete.filter(item => item.id !== id))
     }
 
+    async function deleteAllItems() {
+         for (let i = 1; i <= overlayItems.length; i++) {
+            await axios.delete(`https://63d7bba8afbba6b7c94312f2.mockapi.io/cart/${i}`)
+        }
+        setOverlayItems([])
+    }
+
     const isAdded = (myId) => {
         return overlayItems.some((objIsAdded) => objIsAdded.myId === myId)
     }
@@ -118,7 +125,7 @@ function App() {
 
                     <Route path='/form'
                         element={
-                            <Form />
+                            <Form deleteAllItems={deleteAllItems}/>
                         }
                     />
                 </Routes>
